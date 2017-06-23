@@ -32,7 +32,7 @@ var brickOffsetLeft = 30;
 var score = 0;
 var lives = 3;
 var bricks = []
-var level = 10;
+var level = 7;
 for(c=0;c<brickColumnCount;c++){
     bricks[c] = [];
     for(r=0;r<brickRowCount;r++){
@@ -74,10 +74,8 @@ function collisionDetection() {
                 b.status = 0;
                 score++;
                 if(score == brickRowCount*brickColumnCount) {
-                        alert("YOU WIN, CONGRATULATIONS! prepare for level 2");
-                    level = 5;
-                    draw();
-                        
+                        alert("YOU WIN, CONGRATULATIONS!");
+                        document.location.reload();
                     }
             }
             
@@ -95,7 +93,6 @@ function drawLives(){
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 }
-
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
@@ -124,11 +121,9 @@ var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
             ctx.fill();
             ctx.closePath(); 
             }
-
         }
     }
 }
-
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
@@ -173,7 +168,6 @@ function draw() {
     x += dx;
     y += dy;
 }
-
 setInterval(draw, level);
 </script>
 </body>
