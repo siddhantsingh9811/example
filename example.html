@@ -161,7 +161,7 @@ function draw() {
     }
 }
     if(rightPressed && paddleX < canvas.width-paddleWidth) {
-        paddleX += 10;
+        paddleX += 10
     }
     else if(leftPressed && paddleX > 0) {
         paddleX -= 10;
@@ -171,7 +171,7 @@ function draw() {
     y += dy;
 }
 
-setInterval(draw, 10);
+setInterval(draw, 5);
 </script>
 </body>
 </html>
