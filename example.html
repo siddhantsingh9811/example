@@ -32,7 +32,7 @@ var brickOffsetLeft = 30;
 var score = 0;
 var lives = 3;
 var bricks = []
-
+var level = 10;
 for(c=0;c<brickColumnCount;c++){
     bricks[c] = [];
     for(r=0;r<brickRowCount;r++){
@@ -148,7 +148,8 @@ function draw() {
         lives--;
         if(!lives){
             alert("GAME OVER");
-            document.location.reload();
+            level = 5;
+            draw();
         }
         else{
            x = canvas.width/2;
@@ -171,7 +172,7 @@ function draw() {
     y += dy;
 }
 
-setInterval(draw, 5);
+setInterval(draw, level);
 </script>
 </body>
 </html>
