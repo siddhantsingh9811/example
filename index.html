@@ -32,7 +32,7 @@ var brickOffsetLeft = 30;
 var score = 0;
 var lives = 3;
 var bricks = []
-
+var level = 7;
 for(c=0;c<brickColumnCount;c++){
     bricks[c] = [];
     for(r=0;r<brickRowCount;r++){
@@ -93,7 +93,6 @@ function drawLives(){
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 }
-
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
@@ -122,11 +121,9 @@ var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
             ctx.fill();
             ctx.closePath(); 
             }
-
         }
     }
 }
-
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
@@ -148,7 +145,8 @@ function draw() {
         lives--;
         if(!lives){
             alert("GAME OVER");
-            document.location.reload();
+            level = 5;
+            draw();
         }
         else{
            x = canvas.width/2;
@@ -161,7 +159,7 @@ function draw() {
     }
 }
     if(rightPressed && paddleX < canvas.width-paddleWidth) {
-        paddleX += 10;
+        paddleX += 10
     }
     else if(leftPressed && paddleX > 0) {
         paddleX -= 10;
@@ -170,8 +168,7 @@ function draw() {
     x += dx;
     y += dy;
 }
-
-setInterval(draw, 10);
+setInterval(draw, level);
 </script>
 </body>
 </html>
